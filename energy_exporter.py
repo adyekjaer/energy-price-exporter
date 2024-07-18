@@ -74,7 +74,10 @@ class EnergyCollector:
 
         return int(isoparse(timestamp).timestamp())
 
-    def extract_data_point(self, region, currency, timestamp=int(time.time())):
+    def extract_data_point(self, sel_region, currency, timestamp=None):
+
+        if timestamp is None:
+            timestamp = int(time.time())
 
         currency_str_map = {
             'DKK': 'DKK_per_kWh',
@@ -83,7 +86,7 @@ class EnergyCollector:
         }
 
         for region, data in self.data.items():
-            if region != region:
+            if region != sel_region:
                 continue
             for hour in data:
                 if timestamp >= self.convert_iso_to_epoch(hour['time_start']) and \
