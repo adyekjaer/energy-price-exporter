@@ -17,7 +17,7 @@ class EnergyCollector:
     base_url = 'https://www.elprisenligenu.dk/api/v1/prices'
 
     # Hardcode gauges since there are so few
-    per_kwh_gauge = Gauge('energy_price_dkk_per_kwh', 'Price pr kW', ['region', 'currency'])
+    per_kwh_gauge = Gauge('energy_price_per_kwh', 'Price pr kW', ['region', 'currency'])
     exr_used_gauge = Gauge('energy_price_exr_used', 'EUR to DKK exchange rate')
 
     regions = ['DK1', 'DK2']
